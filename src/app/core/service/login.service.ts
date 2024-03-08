@@ -18,4 +18,12 @@ export class LoginService {
       })
     )
   }
+
+  signup(email: string, password: string): Observable<any> {
+    return this.http.post<any>('http://localhost:8080/api/v1/signup', { email , password }).pipe(
+      map(resp => {
+        return resp;
+      })
+    )
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm = this.fb.nonNullable.group({
-    email: '',
+    email: ['', Validators.email],
     password: '',
   })
 
@@ -29,11 +29,30 @@ export class LoginComponent {
     this.loginService.login(email, password).subscribe({
       next: (resp) => {
         // login başarılı cevabı döndü
-        this.toastr.success('Giriş işlemi başarılı');
+        this.toastr.success('Logged in');
         this.router.navigateByUrl('/menu');
       },
       error: (err) => {
-        this.toastr.error('Hata oluştu');
+        this.toastr.error('Error occured');
+        // formun tüm alanlarının değerleri değiştirilmek isteniyorsa setValue fonksiyonu kullanılır.
+        // Tüm alanların değerleri değiştirilmeyecekse patchValue fonksiyonu kullanılır.
+        this.loginForm.patchValue({ password: '' });
+        console.error(err);
+      }
+    });
+  }
+  signup() {
+    let email = this.loginForm.get('email')!.value;
+    let password = this.loginForm.get('password')!.value;
+    
+    this.loginService.signup(email, password).subscribe({
+      next: (resp) => {
+        // login başarılı cevabı döndü
+        this.toastr.success('Sign Up and Login Succesful');
+        this.router.navigateByUrl('/menu');
+      },
+      error: (err) => {
+        this.toastr.error('Error occured');
         // formun tüm alanlarının değerleri değiştirilmek isteniyorsa setValue fonksiyonu kullanılır.
         // Tüm alanların değerleri değiştirilmeyecekse patchValue fonksiyonu kullanılır.
         this.loginForm.patchValue({ password: '' });

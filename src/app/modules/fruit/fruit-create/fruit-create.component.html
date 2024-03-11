@@ -9,21 +9,42 @@
             <input formControlName="minimum" type="text" class="form-control" id="txtMinimum" placeholder="Minimum Count">
         </div>
         
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Image Droprdown
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <a>
-                  <img src="/assets/img/muz.jpg" width="50px" />Facebook</a>
-              </li>
-              <li>
-                <a>
-                  <img src="/assets/img/elma.jpg" width="50px" />Twitter</a>
-              </li>
-            </ul>
-          </div>
+        <div class="row">
+            <div class="col">
+                <div style="float:left">
+                    <div class="dropdown d-flex">
+                        Image: 
+                        <button class="form-select ms-2 mb-4" type="button" id="fruitSelectButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <div>
+                                @if (selectedImage == '') {
+                                    Select
+                                } @else {
+                                    <img src="{{selectedImage}}" width="50px"/>
+                                }
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="fruitSelectButton" id="fruits">
+                            <li>
+                                <a class="dropdown-item" (click)="imageSelect('/assets/img/muz.jpg')">
+                                    <img src="/assets/img/muz.jpg" width="50px" class="img-dropdown">
+                                    Muz
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="imageSelect('/assets/img/elma.jpg')">
+                                    <img src="/assets/img/elma.jpg" width="50px" class="img-dropdown">
+                                    Elma
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="float:left">
+                    <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
+                </div>
+            </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Add</button>
         <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>

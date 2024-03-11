@@ -12,6 +12,7 @@ export class FruitCreateComponent {
     minimum: 0,
     img: '',
   });
+  selectedImage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -19,6 +20,9 @@ export class FruitCreateComponent {
 
   }
   submit() {
-    
+
+  }
+  imageSelect(image: string) {
+    this.selectedImage = image;
   }
 }

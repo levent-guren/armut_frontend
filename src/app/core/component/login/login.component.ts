@@ -30,7 +30,8 @@ export class LoginComponent {
       next: (resp) => {
         // login başarılı cevabı döndü
         this.toastr.success('Logged in');
-        this.router.navigateByUrl('/menu');
+        let userIsAdmin = this.loginService.userHasRole('admin');
+        this.router.navigateByUrl(userIsAdmin ? 'admin':'/menu');
       },
       error: (err) => {
         this.toastr.error('Error occured');

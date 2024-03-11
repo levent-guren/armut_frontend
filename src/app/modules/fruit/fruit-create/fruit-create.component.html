@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <form [formGroup]="createForm" (submit)="submit()">
+        <div class="mb-3">
+            <label for="txtName" class="form-label">Fruit Name</label>
+            <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Fruit Name">
+        </div>
+        <div class="mb-3">
+            <label for="txtMinimum" class="form-label">Minimum</label>
+            <input formControlName="minimum" type="text" class="form-control" id="txtMinimum" placeholder="Minimum Count">
+        </div>
+        
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Image Droprdown
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a>
+                  <img src="/assets/img/muz.jpg" width="50px" />Facebook</a>
+              </li>
+              <li>
+                <a>
+                  <img src="/assets/img/elma.jpg" width="50px" />Twitter</a>
+              </li>
+            </ul>
+          </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>
+    </form>
+   
+</div>

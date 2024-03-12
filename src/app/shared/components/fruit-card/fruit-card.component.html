@@ -1,1 +1,17 @@
-<p>fruit-card works!</p>
+<div class="card">
+    <div class="d-flex justify-content-end me-1 mb-2">
+        <mat-icon class="edit me-1" fontIcon="edit"></mat-icon>
+        <mat-icon class="close" fontIcon="close" (click)="deleteFruitButtonClicked()"></mat-icon>
+    </div>
+    <div class="d-flex justify-content-center">
+        <img src="{{fruit.image}}" height="50px"/>
+    </div>
+    <div class="d-flex">
+        <div>Name:</div>
+        <div class="ms-2">{{fruit.name}}</div>
+    </div>
+    <div class="d-flex">
+        <div>Minimum:</div>
+        <div class="ms-2">{{fruit.minimum}}</div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 <div class="container-fluid">
     Fruits:
-    <ul class="list-group">
-        <li class="list-group-item">item</li>
-    </ul>
-
+    <div class="d-flex flex-wrap">
+        <app-fruit-card class="m-2" *ngFor="let fruit of fruits" [fruit]="fruit">
+        </app-fruit-card>
+    </div>
     <button class="btn btn-primary mt-2" (click)="createFruit()">Create Fruit</button>
-</div>
+</div> 

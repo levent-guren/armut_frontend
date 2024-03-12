@@ -18,25 +18,21 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <div>
                                 @if (selectedImage == '') {
-                                    Select
+                                    Select Image
                                 } @else {
-                                    <img src="{{selectedImage}}" width="50px"/>
+                                    <img src="{{selectedImage}}" height="20px"/>
                                 }
                             </div>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="fruitSelectButton" id="fruits">
-                            <li>
-                                <a class="dropdown-item" (click)="imageSelect('/assets/img/muz.jpg')">
-                                    <img src="/assets/img/muz.jpg" width="50px" class="img-dropdown">
-                                    Muz
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" (click)="imageSelect('/assets/img/elma.jpg')">
-                                    <img src="/assets/img/elma.jpg" width="50px" class="img-dropdown">
-                                    Elma
-                                </a>
-                            </li>
+                            @for (fruit of getFruits(); track fruit.filename) {
+                                <li>
+                                    <a class="dropdown-item" (click)="imageSelect('/assets/img/'+fruit.filename)">
+                                        <img src="/assets/img/{{ fruit.filename }}" height="30px" width="30px" class="img-dropdown">
+                                        {{ fruit.name}}
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

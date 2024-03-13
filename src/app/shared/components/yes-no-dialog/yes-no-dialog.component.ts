@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './yes-no-dialog.component.scss'
 })
 export class YesNoDialogComponent {
+  question = '';
   constructor(public dialogRef: MatDialogRef<YesNoDialogComponent>) {}
 
   buttonYesClick() {

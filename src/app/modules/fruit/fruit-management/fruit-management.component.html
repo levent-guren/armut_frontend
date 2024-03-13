@@ -1,7 +1,11 @@
 <div class="container-fluid">
     Fruits:
     <div class="d-flex flex-wrap">
-        <app-fruit-card class="m-2" *ngFor="let fruit of fruits" [fruit]="fruit">
+        <app-fruit-card class="m-2" 
+           *ngFor="let fruit of fruits" [fruit]="fruit"
+           (edit)="editFruit($event)"
+           (delete)="deleteFruit($event)"
+           >
         </app-fruit-card>
     </div>
     <button class="btn btn-primary mt-2" (click)="createFruit()">Create Fruit</button>

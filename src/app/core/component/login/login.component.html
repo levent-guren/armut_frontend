@@ -6,7 +6,7 @@
         </div>
         <div class="mb-3">
             <label for="txtPassword" class="form-label">Password</label>
-            <input formControlName="password" type="text" class="form-control" id="txtPassword" placeholder="Password">
+            <input formControlName="password" type="password" class="form-control" id="txtPassword" placeholder="Password">
         </div>
         <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button>
         <button [disabled]="!loginForm.valid" type="button" class="btn btn-primary ms-3" (click)="signup()">Sign Up</button>

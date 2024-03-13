@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FruitService {
-
+  editingFruit: Fruit | null = null;
+  
   constructor(
     private http: HttpClient,
   ) { }
@@ -19,5 +20,8 @@ export class FruitService {
 
   getAllFruits(): Observable<Fruit[]> {
     return this.http.get<Fruit[]>('/fruit/');
+  }
+  deleteFruit(id: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/fruit/delete', { id } );
   }
 }

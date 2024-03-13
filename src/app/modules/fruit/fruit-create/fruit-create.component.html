@@ -42,7 +42,13 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">
+            @if (fruitId == 0) {
+                Add
+            } @else {
+                Update
+            }            
+        </button>
         <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>
     </form>
    

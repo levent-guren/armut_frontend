@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Fruit } from '../../model/fruit';
 import { MatDialog } from '@angular/material/dialog';
 import { YesNoDialogComponent } from '../yes-no-dialog/yes-no-dialog.component';
@@ -9,7 +9,10 @@ import { YesNoDialogComponent } from '../yes-no-dialog/yes-no-dialog.component';
   styleUrl: './fruit-card.component.scss'
 })
 export class FruitCardComponent {
-  @Input() fruit: Fruit = new Fruit('', 0, '');
+  @Input() fruit: Fruit = new Fruit(0, '', 0, '');
+  @Output() delete = new EventEmitter();
+  @Output() edit = new EventEmitter();
+
   constructor(
     private dialog: MatDialog
   ) {}
@@ -27,8 +30,12 @@ export class FruitCardComponent {
         }
       }
     });
+    dialog.componentInstance.question = 'Are you sure for delete this fruit?';
   }
   deleteFruit() {
-    console.log('Fruit silinecek');
+    this.delete.emit(this.fruit);
+  }
+  editFruit() {
+    this.edit.emit(this.fruit);
   }
 }

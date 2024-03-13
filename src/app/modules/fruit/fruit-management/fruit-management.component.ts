@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FruitService } from '../../../shared/service/fruit.service';
 import { Fruit } from '../../../shared/model/fruit';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-fruit-management',
@@ -15,9 +16,13 @@ export class FruitManagementComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private fruitService: FruitService,
+    private toastr: ToastrService,
   ){}
 
   ngOnInit(): void {
+    this.refreshFruits();
+  }
+  refreshFruits() {
     this.fruitService.getAllFruits().subscribe({
       next: (result) => {
         this.fruits = result;
@@ -25,6 +30,18 @@ export class FruitManagementComponent implements OnInit{
     });
   }
   createFruit() {
+    this.router.navigate(['create'], { relativeTo: this.route });
+  }
+  deleteFruit(fruit: Fruit) {
+    this.fruitService.deleteFruit(fruit.id).subscribe({
+      next: (data) => {
+        this.toastr.info('Fruit deleted');
+        this.refreshFruits();
+      }
+    });
+  }
+  editFruit(fruit: Fruit) {
+    this.fruitService.editingFruit = fruit;
     this.router.navigate(['create'], { relativeTo: this.route });
   }
 }

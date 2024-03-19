@@ -24,4 +24,13 @@ export class FruitService {
   deleteFruit(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/fruit/delete', { id } );
   }
+  accept(fruitId: number, count: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/fruit/accept', {fruitId, count});
+  }
+  sale(fruitId: number, count: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/fruit/sale', {fruitId, count});
+  }
+  getFruitCount(id: number): Observable<number> {
+    return this.http.get<number>('/fruit/count/' + id);
+  }
 }

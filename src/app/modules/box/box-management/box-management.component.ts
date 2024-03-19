@@ -72,6 +72,9 @@ export class BoxManagementComponent implements OnInit{
             next: (data) => {
               this.toastr.info('Box updated');
               this.refreshBoxes();
+            },
+            error: (err) => {
+              this.toastr.error(err.error.mesaj);
             }
           });
         }
@@ -100,6 +103,9 @@ export class BoxManagementComponent implements OnInit{
         next: (data) => {
           this.toastr.info('Box deleted');
           this.refreshBoxes();
+        },
+        error: (err) => {
+          this.toastr.error(err.error.mesaj);
         }
       });
     }

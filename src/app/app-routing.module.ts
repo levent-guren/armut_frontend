@@ -8,11 +8,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'menu', component: MenuComponent, children: [
-      { path: 'admin/fruit', loadChildren: 
+      { path: 'fruit', loadChildren: 
           () => import('./modules/fruit/fruit.module')
           .then(m => m.FruitModule)
       },
-      { path: 'admin/box', loadChildren: 
+      { path: 'box', loadChildren: 
           () => import('./modules/box/box.module')
           .then(m => m.BoxModule)
       },

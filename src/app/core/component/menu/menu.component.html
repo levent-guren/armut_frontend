@@ -8,7 +8,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" routerLink="fruit" routerLinkActive="active">Fruit Management</a>
+                <a class="nav-link" routerLink="fruit" [class.active] = "url == '/menu/fruit'">Fruit Management</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="box" routerLinkActive="active">Box Management</a>
@@ -26,7 +26,7 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Hesap
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-end">
                       <li><a class="dropdown-item" [routerLink]="['/menu/account']">Hesap Bilgileri</a></li>
                       <li><a class="dropdown-item" (click)="logout()">Çıkış</a></li>
                     </ul>
